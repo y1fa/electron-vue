@@ -1,10 +1,13 @@
 const {app, BrowserWindow, ipcMain} = require('electron')
 const Path = require('path')
 
+app.commandLine.appendSwitch('remote-debugging-port', '8472');
+
 function createWindow () {
   const mainWindow = new BrowserWindow({
     width: 800,
-    height: 600,
+    height: 480,
+    useContentSize: true,
     webPreferences: {
       preload: Path.join(__dirname, 'preload.js'),
       nodeIntegration: false,
